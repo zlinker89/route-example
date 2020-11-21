@@ -5,6 +5,7 @@ import { DashboardProfileComponent } from './components/dashboard-profile/dashbo
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -27,11 +28,14 @@ const routes: Routes = [
       },
       {
         path: 'home',
-        component: DashboardHomeComponent
+        component: DashboardHomeComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'profile',
-        component: DashboardProfileComponent
+        component: DashboardProfileComponent,
+        canActivate: [AuthGuard],
+        canDeactivate: [AuthGuard]
       }
     ]
   }
@@ -40,7 +44,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes,
     {
-      enableTracing: true, // esto es para hacer pruebas
+      // enableTracing: true, // esto es para hacer pruebas
       useHash: false, // añade /#/
       // paramsInheritanceStrategy: 'always' // hereda parametros
     }

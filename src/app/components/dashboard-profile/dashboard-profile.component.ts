@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-profile.component.sass']
 })
 export class DashboardProfileComponent implements OnInit {
-
+  holamundo = {
+    hola: 'hola',
+    mundo: 'mundo',
+  }
   constructor() { }
 
   ngOnInit(): void {
